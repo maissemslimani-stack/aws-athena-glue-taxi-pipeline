@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Deploys a reusable Amazon Athena Named Query for high-value taxi fares.
+
+Resources:
+  AthenaNamedQuery:
+    Type: AWS::Athena::NamedQuery
+    Properties:
+      Database: "taxidata"
+      Description: "A query that selects all fares over $100.00 (US)"
+      Name: "FaresOver100DollarsUS"
+      QueryString: >
+        SELECT distance, paytype, fare, tip, tolls, surcharge, total
+        FROM yellow
+        WHERE total >= 100.0
+        ORDER BY total DESC
+
+Outputs:
+  AthenaNamedQueryId:
+    Description: ID of the created Athena Named Query
+    Value: !Ref AthenaNamedQuery

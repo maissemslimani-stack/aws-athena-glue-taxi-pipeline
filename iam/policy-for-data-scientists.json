@@ -1,0 +1,61 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AthenaQueryAndCatalogAccess",
+            "Effect": "Allow",
+            "Action": [
+                "athena:StartQueryExecution",
+                "athena:StopQueryExecution",
+                "athena:GetQueryExecution",
+                "athena:GetQueryResults",
+                "athena:GetWorkGroup",
+                "athena:CreateNamedQuery",
+                "athena:GetNamedQuery",
+                "athena:ListNamedQueries",
+                "athena:CreateDataCatalog",
+                "athena:GetDataCatalog",
+                "athena:ListDataCatalogs"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "GlueCatalogReadWriteNoDelete",
+            "Effect": "Allow",
+            "Action": [
+                "glue:CreateDatabase",
+                "glue:GetDatabase",
+                "glue:GetDatabases",
+                "glue:CreateTable",
+                "glue:UpdateTable",
+                "glue:GetTable",
+                "glue:GetTables",
+                "glue:GetPartition",
+                "glue:GetPartitions"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "S3ReadWriteObjectsNoBucketCreation",
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetBucketLocation",
+                "s3:ListBucket",
+                "s3:ListAllMyBuckets",
+                "s3:GetObject",
+                "s3:PutObject"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "CloudFormationNamedQueryDeployment",
+            "Effect": "Allow",
+            "Action": [
+                "cloudformation:CreateStack",
+                "cloudformation:DescribeStacks",
+                "cloudformation:ValidateTemplate"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
